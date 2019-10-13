@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="login-panel panel panel-default animated flipInY" style="border: solid; border-width: 1px; border-color: #003557">
+    <div class="panel-body">
+        <h1 class="BrandLogo"><img class="img-responsive" src="~/Content/Images/TPL-insurance-logo-updatenew.png" /></h1>
+        @Vereyon.Web.FlashMessageHtmlHelper.RenderFlashMessages(Html)
+        @using (Html.BeginForm("Login", "Account", null, FormMethod.Post, new { @class = "form-validate", @id = "test", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <fieldset>
+                <div class="form-group">
+                    <p><input type="text" class="form-control" name="UserName" placeholder="User Name" required="" autofocus="" /></p>
+                    <p><input type="password" class="form-control" name="Password" placeholder="Password" required="" /></p>
+                </div>
+
+                <div class="Sign_opt submit">
+                    <div class="remember">
+                        <input type="checkbox" value="remember-me" name="RememberMe" class='icheck-me' data-skin="square" data-color="blue" id="RememberMe"> <label for="remember">Remember me</label>
+                    </div>
+                    <button style="width:100%; height:34px; background:#003557; color:white;" class="btn btnLogin" type="submit">Login</button>
+                </div>
+            </fieldset>
+        }
+
+    </div>
+</div>

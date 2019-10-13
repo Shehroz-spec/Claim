@@ -1,0 +1,305 @@
+﻿@model ClaimDigitalize.Models.PolicyObjectVM
+
+<input type="hidden" id="ReserveAmount" name="ReserveAmount" value="@Model.ClaimReserve.ReserveAmount">
+<input type="hidden" id="ReserveAmount" name="ReserveAmountT" value="">
+<input type="hidden" id="ReserveRemarks" name="ReserveRemarks" value="">
+
+<div class="col-xs-6 col-md-4 col-sm-4" style="margin-bottom:20px;">
+    <div class="form-group">
+        <label for="textfield">Ask for 3rd Party Accident?</label>
+        <div class="controls controls-row" style="padding-left:20px;">
+            <label class="radio">
+                <input type="radio" value="yes" id="IsThirdPartyAccident" name="IsThirdPartyAccident"> Yes
+            </label>
+            <label class="radio">
+                <input type="radio" value="no" id="IsThirdPartyAccident" name="IsThirdPartyAccident"> No
+            </label>
+        </div>
+    </div>
+</div>
+<div class="col-xs-6 col-md-4 col-sm-4 hidden" id="DamageObjectType" style="margin-bottom:20px;">
+    <div class="form-group">
+        <label for="textfield">Please provide damage object type</label>
+        <div class="controls controls-row">
+            <select class="form-control" id="VehicleDetailDD" name="VehicleDetailDD" onchange="ClaimObj.VehicleDetailChange()">
+                <option>Select</option>
+                <option value="Vehicle">Vehicle</option>
+                <option value="OtherVehicle">Other Vehicle</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12 col-md-12 col-sm-12 hidden" id="VehicleDetail" style="padding-top: 20px; padding-bottom: 20px;">
+    <div class="panelDetailHead">
+        <h3 class="panel-title">Please provide Vehicle detail</h3>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-md-4 col-sm-4">
+            <div class="form-group">
+                <label for="textfield">Registration No</label>
+                <input type="text" class="input-block-level form-control" placeholder="Registration No" id="RegistrationNo" name="RegistrationNo" required />
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-4 col-sm-4">
+            <div class="form-group">
+                <label for="textfield">Vehicle Make</label>
+                <input type="text" class="input-block-level form-control" placeholder="Vehicle Make" id="VehicleMake" name="VehicleMake" required />
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-4 col-sm-4">
+            <div class="form-group">
+                <label for="textfield">Vehicle Model</label>
+                <input type="text" class="input-block-level form-control" placeholder="Vehicle Model" id="VehicleModel" name="VehicleModel" required />
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-4 col-sm-4">
+            <div class="form-group">
+                <label for="textfield">Engine No</label>
+                <input type="text" class="input-block-level form-control" placeholder="Engine No" id="EngineNo" name="EngineNo" required />
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-4 col-sm-4">
+            <div class="form-group">
+                <label for="textfield">Chassis No</label>
+                <input type="text" class="input-block-level form-control" placeholder="Chassis No" id="ChassisNo" name="ChassisNo" required />
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-4 col-sm-4">
+            <div class="form-group">
+                <label for="textfield">Name of the Insurance Company</label>
+                <input type="text" class="input-block-level form-control" placeholder="Name Insurance Company" id="NameInsuranceCompany" name="NameInsuranceCompany" required />
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-4 col-sm-4">
+            <div class="form-group">
+                <label for="textfield">Policy period</label>
+                <input type="text" class="input-block-level form-control" placeholder="Policy Period" id="PolicyPeriod" name="PolicyPeriod" required />
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-4 col-sm-4">
+            <div class="form-group">
+                <label for="textfield">Policy Report</label>
+                <input type="text" class="input-block-level form-control" placeholder="Policy Report" id="PolicyReport" name="PolicyReport" required />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12 col-md-12 col-sm-12 hidden" id="OtherVehicle" style="padding-top: 20px; padding-bottom: 20px;">
+    <div class="panelDetailHead">
+        <h3 class="panel-title">Please provide Object detail</h3>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-md-4 col-sm-4">
+            <div class="form-group">
+                <label for="textfield">Object Type</label>
+                <input type="text" class="input-block-level form-control" placeholder="Object Type" id="ObjectType" name="ObjectType" required />
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-4 col-sm-4">
+            <div class="form-group">
+                <label for="textfield">Object Detail</label>
+                <input type="text" class="input-block-level form-control" placeholder="Object Detail" id="ObjectDetail" name="ObjectDetail" required />
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-4 col-sm-4">
+            <div class="form-group">
+                <label for="textfield">Object Location</label>
+                <input type="text" class="input-block-level form-control" placeholder="Object Location" id="ObjectLocation" name="ObjectLocation" required />
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-4 col-sm-4">
+            <div class="form-group">
+                <label for="textfield">Damage Detail1</label>
+                <input type="text" class="input-block-level form-control" placeholder="Damage Detail1" id="DamageDetail1" name="DamageDetail1" required />
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-4 col-sm-4">
+            <div class="form-group">
+                <label for="textfield">Damage Detail2</label>
+                <input type="text" class="input-block-level form-control" placeholder="Damage Detail2" id="DamageDetail2" name="DamageDetail2" required />
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-4 col-sm-4">
+            <div class="form-group">
+                <label for="textfield">Damage Detail Remarks</label>
+                <input type="text" class="input-block-level form-control" placeholder="Damage Detail Remarks" id="DamageDetailRemarks" name="DamageDetailRemarks" required />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@{
+ if (Model.DocumentList != null && Model.DocumentList.Count != 0)
+    {
+    <div class="col-xs-12 col-md-12 col-sm-12">
+        <div class="form-group">
+            <div class="panelDetailHead">
+                <h3 class="panel-title">Required Documents</h3>
+            </div>
+            <div class="control-group">
+                <div class="controls controls-row">
+                    <ol class="text-info">
+                        @foreach (var d in Model.DocumentList)
+                        {
+                            <li>@d.DocumentName</li>
+                        }
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+}
+
+
+
+<script type="text/javascript">
+
+    $(function () {
+        // preload third party fields for edit view
+        if (_$.obj.GetAnswer) {
+            _$.SetComboboxByValue("#IncidentCity", _$.obj.IncidentCity);
+            _$.SetComboboxByValue("#CurrentCity", _$.obj.CurrentCity);
+            _$.SetComboboxByValue("#RelationWithInsured", _$.obj.RelationWithInsured);
+            $("#Incidentdate").val(_$.obj.IncidentDate);
+            $("#Circumstances").val(_$.obj.Circumstances);
+            $("#InsuredName").val(_$.obj.InsuredName);
+            $("#MobileNo").val(_$.obj.Mobile);
+            $("#Email").val(_$.obj.Email);
+            $("#PhoneNo").val(_$.obj.PhoneNo);
+
+
+            var IsThirdPartyAccident = "";
+            var VehicleDetailDD = "";
+            var RegistrationNo = "";
+            var VehicleMake = "";
+            var VehicleModel = "";
+            var EngineNo = "";
+            var ChassisNo = "";
+            var NameInsuranceCompany = "";
+            var PolicyPeriod = "";
+            var PolicyReport = "";
+            var ObjectType = "";
+            var ObjectDetail = "";
+            var ObjectLocation = "";
+            var DamageDetail1 = "";
+            var DamageDetail2 = "";
+            var DamageDetailRemarks = "";
+
+            _$.obj.GetAnswer.forEach(function (i, j) {
+
+                if (i.Question_Id === "IsThirdPartyAccident")
+                    IsThirdPartyAccident = i.Answer;
+
+                if (i.Question_Id === "VehicleDetailDD")
+                    VehicleDetailDD = i.Answer;
+
+                if (i.Question_Id === "RegistrationNo")
+                    RegistrationNo = i.Answer;
+
+                if (i.Question_Id === "VehicleMake")
+                    VehicleMake = i.Answer;
+
+                if (i.Question_Id === "VehicleModel")
+                    VehicleModel = i.Answer;
+
+                if (i.Question_Id === "EngineNo")
+                    EngineNo = i.Answer;
+
+                if (i.Question_Id === "ChassisNo")
+                    ChassisNo = i.Answer;
+
+                if (i.Question_Id === "NameInsuranceCompany")
+                    NameInsuranceCompany = i.Answer;
+
+                if (i.Question_Id === "PolicyPeriod")
+                    PolicyPeriod = i.Answer;
+
+                if (i.Question_Id === "PolicyReport")
+                    PolicyReport = i.Answer;
+
+                if (i.Question_Id === "ObjectType")
+                    ObjectType = i.Answer;
+
+                if (i.Question_Id === "ObjectDetail")
+                    ObjectDetail = i.Answer;
+
+                if (i.Question_Id === "ObjectLocation")
+                    ObjectLocation = i.Answer;
+
+                if (i.Question_Id === "DamageDetail1")
+                    DamageDetail1 = i.Answer;
+
+                if (i.Question_Id === "DamageDetail2")
+                    DamageDetail2 = i.Answer;
+
+                if (i.Question_Id === "DamageDetailRemarks")
+                    DamageDetailRemarks = i.Answer;
+            });
+
+
+            var isThirdParty = IsThirdPartyAccident === "yes" || IsThirdPartyAccident === "no";
+            $("#IsThirdPartyAccident").prop("checked", isThirdParty).change();
+
+            if ($("#IsThirdPartyAccident").is(":checked")) {
+
+                $("#DamageObjectType").removeClass("hidden");
+                $('#VehicleDetailDD option[value="' + VehicleDetailDD + '"]').attr("selected", true);
+
+                if ($("#VehicleDetailDD option:selected").val() === "Vehicle") {
+                    $("#VehicleDetail").removeClass("hidden");
+                    $("#OtherVehicle").addClass("hidden");
+                }
+
+                if ($("#VehicleDetailDD option:selected").val() === "OtherVehicle") {
+                    $("#OtherVehicle").removeClass("hidden");
+                    $("#VehicleDetail").addClass("hidden");
+                }
+            }
+            else {
+                $("#VehicleDetail, #OtherVehicle").addClass("hidden");
+                $("#DamageObjectType").addClass("hidden");
+                $("#VehicleDetailDD").val($("#VehicleDetailDD option:first").val());
+            }
+
+            $("#RegistrationNo").val(RegistrationNo);
+            $("#VehicleMake").val(VehicleMake);
+            $("#VehicleModel").val(VehicleModel);
+            $("#EngineNo").val(EngineNo);
+            $("#ChassisNo").val(ChassisNo);
+            $("#NameInsuranceCompany").val(NameInsuranceCompany);
+            $("#PolicyPeriod").val(PolicyPeriod);
+            $("#PolicyReport").val(PolicyReport);
+            $("#ObjectType").val(ObjectType);
+            $("#ObjectDetail").val(ObjectDetail);
+            $("#ObjectLocation").val(ObjectLocation);
+            $("#DamageDetail1").val(DamageDetail1);
+            $("#DamageDetail2").val(DamageDetail2);
+            $("#DamageDetailRemarks").val(DamageDetailRemarks);
+        }
+    });
+
+    $(document).on('change', '#IsThirdPartyAccident', function () {
+
+        //thirdparty
+        if (_$.GetRadioButtonValue("IsThirdPartyAccident") === 'yes') {
+            $("#DamageObjectType").removeClass("hidden");
+
+
+            if ($("#DamageObjectType option:selected").val().toLowerCase() === "vehicle") {
+                $("#VehicleDetail").removeClass("hidden");
+                $("#OtherVehicle").addClass("hidden");
+            }
+            else if ($("#DamageObjectType option:selected").val().toLowerCase() === "othervehicle") {
+                $("#OtherVehicle").removeClass("hidden");
+                $("#VehicleDetail").addClass("hidden");
+            }
+
+        } else {
+            $("#DamageObjectType").addClass("hidden");
+            $("#VehicleDetail, #OtherVehicle").addClass("hidden");
+            $("#VehicleDetailDD").val($("#VehicleDetailDD option:first").val());
+        }
+    });
+</script>

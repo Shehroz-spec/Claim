@@ -1,0 +1,91 @@
+﻿@model ClaimDigitalize.Models.PolicyObjectVM
+<!-- Theft/Snatch -->
+
+<input type="hidden" id="ReserveAmount" name="ReserveAmount" value="@Model.ClaimReserve.ReserveAmount">
+<input type="hidden" id="ReserveAmount" name="ReserveAmountT" value="">
+<input type="hidden" id="ReserveRemarks" name="ReserveRemarks" value="">
+
+<div class="col-xs-6 col-md-4 col-sm-4">
+    <div class="form-group">
+        <label for="textfield">Have you intimate 15 Service?</label>
+        <div class="controls controls-row" style="padding-left:20px;">
+            <label class="radio">
+                <input type="radio" value="yes" id="IntimateService" name="IntimateService"> Yes
+            </label>
+            <label class="radio">
+                <input type="radio" value="no" id="IntimateService" name="IntimateService" checked> No
+            </label>
+        </div>
+    </div>
+</div>
+<div class="col-xs-6 col-md-4 col-sm-4 IntimateServiceDiv hidden">
+    <div class="form-group">
+        <label for="textfield">15 Complaint number</label>
+        <input type="text" class="input-block-level form-control" placeholder="15 Complaint #" id="ComplaintNo" name="ComplaintNo" required />
+    </div>
+</div>
+<div class="col-xs-6 col-md-4 col-sm-4">
+    <div class="form-group">
+        <label for="textfield">Is Trakker install?</label>
+        <div class="controls controls-row" style="padding-left:20px;">
+            <label class="radio">
+                <input type="radio" value="yes" id="TrakkerInstall" name="TrakkerInstall"> Yes
+            </label>
+            <label class="radio">
+                <input type="radio" value="no" id="TrakkerInstall" name="TrakkerInstall" checked> No
+            </label>
+        </div>
+    </div>
+</div>
+<div class="col-xs-6 col-md-4 col-sm-4 TrakkerInstallDiv hidden">
+    <div class="form-group">
+        <label for="textfield">TrackerCompanyName</label>
+        @Html.DropDownList("TrackerCompanyName", new SelectList(Model.GetTrakkerCompany, "Value", "Text", "0"), "Select ", new { id = "TrackerCompanyName", @class = "input-block-level form-control", @required = "required" })
+    </div>
+</div>
+
+
+<div class="col-xs-12 col-md-12 col-sm-12">
+    <div class="form-group">
+        @{
+            if (Model.DocumentList != null && Model.DocumentList.Count != 0)
+            {
+                <div class="panelDetailHead">
+                    <h3 class="panel-title">Required Documents</h3>
+                </div>
+                <div class="control-group">
+                    <div class="controls controls-row">
+                        <ol class="text-info">
+                            @foreach (var d in Model.DocumentList)
+                            {
+                                <li>@d.DocumentName</li>
+                            }
+                        </ol>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<script>
+
+    $(document).on('change', '#IntimateService', function () {
+        if (_$.GetRadioButtonValue("IntimateService") == 'yes') {
+            $(".IntimateServiceDiv").removeClass("hidden");
+        } else {
+            $(".IntimateServiceDiv").addClass("hidden");
+        }
+    });
+
+
+    $(document).on('change', '#TrakkerInstall', function () {
+        if (_$.GetRadioButtonValue("TrakkerInstall") == 'yes') {
+            $(".TrakkerInstallDiv").removeClass("hidden");
+        } else {
+            $(".TrakkerInstallDiv").addClass("hidden");
+        }
+    });
+
+</script>
+<!-- /Theft/Snatch -->

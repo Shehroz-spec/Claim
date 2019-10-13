@@ -1,0 +1,77 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    input.wrong-field {
+        border: 1px solid red;
+    }
+
+    span.wrong-field {
+        color: #FF0000;
+    }
+</style>
+<script src="~/Content/Script/knockout-min.js"></script>
+<script src="~/Content/Script/knockout.validation.min.js"></script>
+<script src="~/Content/Script/Custom/Search.js"></script>
+
+<div class="panel panel-default collapse_portlet no-collapse">
+    <div class="panel-heading">
+        <h3 class="panel-title">Search Claim</h3>
+    </div>
+    <div class="panel-body claimSearchView">
+        <form class="col-sm-12 row-eq-height" style="padding-bottom:0;">
+            <div class="row">
+                <div class="col-xs-6 col-sm-3">
+                    <div class="form-group">
+                        <label for="ClaimNo">Policy No</label>
+                        <input type="text" name="SalesFormNo" id="SalesFormNo" data-bind="value: SalesFormNo, validationElement: SalesFormNo" class="form-control" placeholder="Policy No." />
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="form-group">
+                        <label for="ClaimNo">Registration No</label>
+                        <input type="text" name="RegistrationNo" id="RegistrationNo" data-bind="value: RegistrationNo, validationElement: RegistrationNo" class="form-control" placeholder="Registration No." />
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="form-group">
+                        <label for="ClaimNo">Engine No</label>
+                        <input type="text" name="EngineNo" id="EngineNo" data-bind="value: EngineNo, validationElement: EngineNo" class="form-control" placeholder="Engine No." />
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="form-group">
+                        <label for="ClaimNo">Chassis No</label>
+                        <input type="text" name="Chasis" id="Chasis" data-bind="value: Chasis, validationElement: Chasis" class="form-control" placeholder="Chassis No." />
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="form-group">
+                        <label for="ClaimNo">CNIC No</label>
+                        <input type="text" name="NIC" id="NIC" data-bind="value: NIC" class="form-control" placeholder="xxxxx-xxxxxxx-x" pattern="^[0-9+]{5}-[0-9+]{7}-[0-9]{1}$" title="Invalid CNIC" />
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="form-group">
+                        <label for="ClaimNo">Phone No</label>
+                        <input type="text" name="MobileNo" id="MobileNo" data-bind="value: MobileNo" class="form-control" placeholder="03123456789" pattern="^((\+92)|(0092))-{0}\d{3}-{0}\d{7}$|^\d{11}$|^\d{4}-\d{7}$" title="Invalid Cell number" />
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="form-group">
+                        <label for="ClaimNo">Claim No</label>
+                        <input type="text" name="ClaimNo" id="ClaimNo" data-bind="value: ClaimNo, validationElement: ClaimNo" class="form-control" placeholder="Claim No." />
+                    </div>
+                </div>
+
+                <div class="col-sm-12 btns_grp">
+                    <button type="button" class="btn btn-default" value="Clear" id="Clear" data-bind="click: reset">Clear</button>
+                    <button type="submit" class="btn btn-insurance" value="Search" data-bind='click: submit'>Search</button>
+
+                </div>
+            </div>
+        </form>
+        <div id="ClaimSearch" class="col-sm-12 row-eq-height"></div>
+    </div>
+</div>
+        

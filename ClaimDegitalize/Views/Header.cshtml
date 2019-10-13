@@ -1,0 +1,35 @@
+﻿
+<nav class="navbar navbar-inverse navbar-nav" role="navigation" id="navigation" style="background-image:url(../../Content/Images/mountain_bg.jpg); background-position: center center; background-size: cover; width:100%; border-radius: 0; border: 0;">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <a class="navbar-brand" href="https://tplinsurance.com">
+            <img class="img-responsive" src="~/Content/Images/tdi.png" />
+        </a>
+
+        <ul class="nav navbar-nav navbar-right user_menu" style="padding-right:25px">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span id="UserName"></span><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="@Url.Action("Index","Claim")">
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("LogOff", "Account")" id="anchorSignOut">Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<script>
+    $(function () {
+        var tokenObj = JSON.parse(atob(JSON.parse(localStorage.getItem("_jwt")).access_token.split('.')[1]));
+
+        if (tokenObj) {
+            $("#UserName").html(tokenObj.unique_name);
+        }
+    });
+</script>

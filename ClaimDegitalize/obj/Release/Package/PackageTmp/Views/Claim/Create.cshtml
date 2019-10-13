@@ -1,0 +1,343 @@
+﻿@using ClaimDigitalize.Models
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- FORM -->
+@{
+    var Model = (dynamic)Session["PolicyObject"];
+    var clIntimation = (ClaimIntimationVM)Session["ClIntimationSession"];
+    var policyStartDate = string.Empty;
+    var policyEndDate = string.Empty;
+    var vehicleStartDate = string.Empty;
+    var vehicleEndDate = string.Empty;
+
+    if (!string.IsNullOrEmpty(Model.PolicyStartDate))
+    {
+        policyStartDate = Model.PolicyStartDate.Split(' ')[0];
+    }
+
+    if (!string.IsNullOrEmpty(Model.PolicyEndDate))
+    {
+        policyEndDate = Model.PolicyEndDate.Split(' ')[0];
+    }
+
+    if (!string.IsNullOrEmpty(Model.VehicleStartDate))
+    {
+        vehicleStartDate = Model.VehicleStartDate.Split(' ')[0];
+    }
+
+    if (!string.IsNullOrEmpty(Model.VehicleEndDate))
+    {
+        vehicleEndDate = Model.VehicleEndDate.Split(' ')[0];
+    }
+}
+
+<div class="row-eq-height Info_Detail_grid claimDataView">
+    <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <fieldset>
+                <label>Policy No:</label>
+                <p>@Model.SalesFormNo</p>
+            </fieldset>
+            <fieldset>
+                <label>Engine No:</label>
+                <p>@Model.EngineNo</p>
+            </fieldset>
+            <fieldset>
+                <label>Chassis No:</label>
+                <p>@Model.ChassisNo</p>
+            </fieldset>
+            <fieldset>
+                <label>Registration No:</label>
+                <p>@Model.RegisterationNo</p>
+            </fieldset>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <fieldset>
+                <label>Vehicle Make:</label>
+                <p>@Model.VehicleMake</p>
+            </fieldset>
+            <fieldset>
+                <label>Vehicle Model:</label>
+                <p>@Model.VehicleModel</p>
+            </fieldset>
+            <fieldset>
+                <label>Vehicle Color:</label>
+                <p>@Model.VehicleColor</p>
+            </fieldset>
+            <fieldset>
+                <label>Year Of Manufacture:</label>
+                <p>@Model.YearOfManufacture</p>
+            </fieldset>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <fieldset>
+                <label>Policy Start Date:</label>
+                <p>@policyStartDate</p>
+            </fieldset>
+            <fieldset>
+                <label>Policy End Date:</label>
+                <p>@policyEndDate</p>
+            </fieldset>
+            <fieldset>
+                <label>Vehicle Start Date:</label>
+                <p>@vehicleStartDate</p>
+                <span id="VehicleStartDate" style="display: none;">@Model.VehicleStartDate</span>
+            </fieldset>
+            <fieldset>
+                <label>Vehicle End Date:</label>
+                <p>@vehicleEndDate</p>
+                <span id="VehicleEndDate" style="display: none;">@Model.VehicleEndDate</span>
+            </fieldset>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <fieldset>
+                <label>Claim Count:</label>
+                <p>@Model.Claimcount</p>
+            </fieldset>
+            <fieldset>
+                <label>Claim Paid Amount:</label>
+                <p>@clIntimation.ClaimPaidAmount</p>
+            </fieldset>
+            <fieldset>
+                <label>Deductible Amount:</label>
+                <p>@clIntimation.DeductibleAmount</p>
+            </fieldset>
+            <fieldset>
+                <label>Outstanding:</label>
+                <p>@clIntimation.Outstanding</p>
+            </fieldset>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <fieldset>
+                <label>Claim Intimation Amount:</label>
+                <p>@clIntimation.ClaimIntimationAmount</p>
+            </fieldset>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_GeneratedClaimDetail", "")
+
+
+<div class="row-eq-height">
+    <div class="panelDetailHead">
+        <h3 class="panel-title">Claim Form</h3>
+    </div>
+    <div id="CreateClaim" class="Claim_Fields">
+        <form class="form-horizontal" role="form">
+            <input type="hidden" id="Salesformdetailid" name="Salesformdetailid" value="@Model.SalesFormDetail_Id">
+            <input type="hidden" id="SalesFormMapping_Id" name="SalesFormMapping_Id" value="@Model.SalesFormMapping_Id">
+            <input type="hidden" id="Contact_Id" name="Contact_Id" value="@Model.Contact_Id">
+            <input type="hidden" id="SalesFormNo" name="SalesFormNo" value="@Model.SalesFormNo">
+
+            <div class="form-body" style="margin-top:10px;">
+                <div class="row">
+                    <div class="col-xs-6 col-md-4 col-sm-4">
+                        <div class="form-group">
+                            <label>Claim Type<span class="required" aria-required="true"> * </span></label>
+                            @Html.DropDownList("claimType", new SelectList(Model.GetClaimType, "Value", "Text", "0"), "Select ", new { id = "claimType", @onchange = "ClaimObj.SelectClaimType('#CreateClaim', 'add')", @class = "form-control", @required = "required" })
+                            <span class="help-block"> Please provide claim type </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-4 col-sm-4">
+                        <div class="form-group">
+                            <label>Branch<span class="required" aria-required="true"> * </span></label>
+                            @Html.DropDownList("Branch", new SelectList(Model.GetBranch, "Value", "Text", "0"), "Select ", new { id = "Branch", @class = "form-control", @required = "required" })
+                            <span class="help-block"> Please provide branch </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-4 col-sm-4">
+                        <div class="form-group">
+                            <label>Date &amp; Time incident<span class="required" aria-required="true"> * </span></label>
+                            <div class='input-append'>
+                                <input type="text" id="Incidentdate" name="Incidentdate" readonly class="form_datetime form-control" placeholder="" required onchange="_$.validateIncidentDate();" maxlength="19" />
+                                <span class="add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                                <span class="help-block"> Please provide Date and Time of incident </span>
+                                <span class="required" style="display:none; color:red;" id="compDateValMsg"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-4 col-sm-4">
+                        <div class="form-group">
+                            <label>Incident Place<span class="required" aria-required="true"> * </span></label>
+                            @Html.DropDownList("IncidentCity", new SelectList(Model.GetCity, "Value", "Text", "0"), new { id = "IncidentCity", @onchange = "ClaimObj.SelectIncidentCity(this)", @class = "input-block-level form-control", @required = "required" })
+                            <select id="IncidentArea" onchange="ClaimObj.SelectIncidentArea(this)" name="IncidentArea" class="input-block-level form-control" required></select>
+                            <span class="help-block"> Please provide Place of incident </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-4 col-sm-4">
+                        <div class="form-group">
+                            <label>Current Location<span class="required" aria-required="true"> * </span></label>
+                            @Html.DropDownList("CurrentCity", new SelectList(Model.GetCity, "Value", "Text", "0"), new { id = "CurrentCity", @onchange = "ClaimObj.SelectCurrentCity(this)", @class = "input-block-level form-control", @required = "required" })
+                            <select id="CurrentArea" name="CurrentArea" class="input-block-level form-control" required></select>
+                            <span class="help-block"> Please provide your current Location </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label>Circumstance of Claims/Loss<span class="required" aria-required="true"> * </span></label>
+                            <textarea class="input-block-level form-control" rows="3" id="Circumstances" name="Circumstances" maxlength="1000"></textarea>
+                            <span class="help-block"> Please provide Circumstance of Claims/Loss upto 1000 characters </span>
+                        </div>
+                    </div>
+
+                    @if (Model.EVAC != 0)
+                    {
+                        <div class="col-xs-12 col-md-12 col-sm-12">
+                            <div class="row">
+                                <div class="col-xs-6 col-md-3 col-sm-4">
+                                    <div class="control-group">
+                                        <label for="textfield">Is require Tow truck</label>
+                                        <div class="controls controls-row" style="padding-left:20px;">
+                                            <label class="radio">
+                                                <input type="radio" value="yes" id="IsRequireTowTruck" name="IsRequireTowTruck"> Yes
+                                            </label>
+                                            <label class="radio">
+                                                <input type="radio" value="no" id="IsRequireTowTruck" name="IsRequireTowTruck" checked> No
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-md-3 col-sm-4">
+                                    <div class="control-group">
+                                        <label for="textfield">Is require Rent a Car</label>
+                                        <div class="controls controls-row" style="padding-left:20px;">
+                                            <label class="radio">
+                                                <input type="radio" value="yes" id="IsRequireRentaCar" name="IsRequireRentaCar"> Yes
+                                            </label>
+                                            <label class="radio">
+                                                <input type="radio" value="no" id="IsRequireRentaCar" name="IsRequireRentaCar" checked> No
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                    <div id="ClaimTypeContent" class="col-xs-12 col-md-12 col-sm-12" style="padding:0;"></div>
+
+                    <div class="col-xs-12 col-md-12 col-sm-12 c_persnal_data">
+                        <div class="panelDetailHead">
+                            <h3 class="panel-title">Customer / Contact person details </h3>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6 col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Relation with Insured<span class="required" aria-required="true"> * </span></label>
+                                    @Html.DropDownList("RelationWithInsured", new SelectList(Model.GetRelation, "Value", "Text", "0"), "Select ", new { id = "RelationWithInsured", @onchange = "ClaimObj.PreSelectCreateCustomer('" + @Model.InsuredName + "', '" + @Model.MobileNo + "')", @class = "input-block-level form-control", @required = "required" })
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Name<span class="required" aria-required="true"> * </span></label>
+                                    <input type="text" id="InsuredName" name="InsuredName" class="input-block-level form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Cell No<span class="required" aria-required="true"> * </span></label>
+                                    <input type="text" id="MobileNo" name="MobileNo" maxlength="11" onchange="_$.validateInputField($(this), 'CellNo');" onkeyup="_$.validateInputField($(this), 'CellNo');" onpaste="_$.validateInputField($(this), 'CellNo');" placeholder="03123456789" class="input-block-level form-control" required>
+                                    <span style="display: none; color: red;" id="cellValidate">Invalid Cell number</span>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Email </label>
+                                    <input type="email" id="Email" name="Email" onchange="_$.validateInputField($(this), 'Email');" onkeyup="_$.validateInputField($(this), 'Email');" onpaste="_$.validateInputField($(this), 'Email');" placeholder="user@domain.com" maxlength="50" class="input-block-level form-control">
+                                    <span style="display: none; color: red;" id="emailValidate">Invalid Email</span>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Phone No </label>
+                                    <input type="text" id="PhoneNo" name="PhoneNo" onchange="_$.validateInputField($(this), 'PhoneNo');" onkeyup="_$.validateInputField($(this), 'PhoneNo');" onpaste="_$.validateInputField($(this), 'PhoneNo');" placeholder="02133456789" maxlength="11" class="input-block-level form-control">
+                                    <span style="display: none; color: red;" id="phoneValidate">Invalid Phone number</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-12 col-sm-12">
+                        <div class="form-group Remarks">
+                            <label>Remarks </label>
+                            <textarea id="Remarks" name="Remarks" class="input-block-level form-control" maxlength="600"></textarea>
+                        </div>
+                        <div class="btns_grp" style="text-align:left; margin-bottom:20px;">
+                            <button id="btnAdd" type="button" class="btn btn-insurance">Add</button>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <div class="table-responsive">
+                                <table id="tblRemarksList" class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td>User name</td>
+                                            <td>Remarks</td>
+                                            <td>Date/Time</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="remarksdetail"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-12 col-sm-12 btns_grp">
+                        <button type="button" onclick='ClaimObj.Save("#CreateClaim");' id="Save" value="Submit" class="btn btn-default">Submit</button>
+                        <button type="button" id="btnClose" class="btn btn-insurance">Close</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- /FORM -->
+    </div>
+</div>
+
+<script type="text/javascript">
+        $(function () {
+
+            $("#Incidentdate").datetimepicker({
+                format: "yyyy-mm-dd hh:ii",
+                autoclose: true,
+                todayBtn: true,
+                pickerPosition: "bottom-left",
+                startDate: new Date(_$.getFormattedDateStrByMonth($("#VehicleStartDate").text().trim().replace(/-/g, '/'))),
+                endDate: new Date(new Date().setDate(new Date().getDate()))
+            });
+
+             $("#btnClose").on("click", function (e) {
+
+                if (confirm("Do you want to cancel claim intimation ?")) {
+                    location.href = '@Url.Action("Index", "Claim")';
+                }
+            });
+
+            $("#GeneratedClaimDetail").hide();
+            $(".js-example-basic-single").select2();
+            $("#WorkshopDiv, #WorkshopNameDiv").hide();
+            $(".policyInfo").show();
+            $("#IncidentArea, #CurrentArea").css("display", "none");
+
+            $('#btnAdd').on("click", function () {
+
+                var accessToken = JSON.parse(localStorage.getItem("_jwt"));
+                var userName = JSON.parse(atob(accessToken.access_token.split('.')[1])).unique_name;
+
+                var date = new Date();
+                var remark = $("#Remarks").val();
+                if (remark && remark !== "" && remark.length > 0) {
+                    $('#tblRemarksList > tbody:last')
+                        .append('<tr><td>' + userName + '</td><td>' + remark + '</td><td>' + date.toLocaleString() + '</td></tr>');
+                    $("#Remarks").val("");
+                }
+                else {
+                    alert("Remarks cannot be empty");
+                }
+            });
+        });
+</script>

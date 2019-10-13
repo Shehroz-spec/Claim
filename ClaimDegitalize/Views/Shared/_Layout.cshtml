@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="~/Content/Images/favicon.png" />
+
+    <title>Search Page</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="~/Content/css/plugins/jquery-ui/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/css/plugins/jquery-ui/smoothness/jquery.ui.theme.css">
+    <!-- PageGuide -->
+    <link rel="stylesheet" href="~/Content/css/plugins/pageguide/pageguide.css">
+    <!-- Fullcalendar -->
+    <link rel="stylesheet" href="~/Content/css/plugins/fullcalendar/fullcalendar.css">
+    <link rel="stylesheet" href="~/Content/css/plugins/fullcalendar/fullcalendar.print.css" media="print">
+    <link rel="stylesheet" href="~/Content/Script/plugins/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+
+    <!-- icheck -->
+    <link rel="stylesheet" href="~/Content/css/plugins/icheck/all.css">
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <!-- Color CSS -->
+    <link rel="stylesheet" href="~/Content/css/themes.css">
+
+    <!-- Custom CSS -->
+    <link href="~/Content/Custom/Claim.css" rel="stylesheet" />
+    <!-- SweetAlert CSS -->
+    <link href="~/Content/sweetalert/sweetalert.css" rel="stylesheet" />
+    <!-- taoster CSS -->
+    <link href="~/Content/css/plugins/toaster/taoster.css" rel="stylesheet" />
+
+    <!-- DataTable CSS -->
+    <link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <!-- Customize Theme Stylesheet -->
+    <link rel="stylesheet" href="~/Content/css/my_custom_style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600" rel="stylesheet">
+
+    <link href="/Content/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/plugins/select2/select2.css">
+
+    <!-- jQuery -->
+    <script src="~/Content/Script/jquery.min.js"></script>
+
+    <!-- Nice Scroll -->
+    <script src="~/Content/Script/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="~/Content/Script/plugins/jquery-ui/jquery.ui.core.min.js"></script>
+    <script src="~/Content/Script/plugins/jquery-ui/jquery.ui.widget.min.js"></script>
+    <script src="~/Content/Script/plugins/jquery-ui/jquery.ui.mouse.min.js"></script>
+    <script src="~/Content/Script/plugins/jquery-ui/jquery.ui.draggable.min.js"></script>
+    <script src="~/Content/Script/plugins/jquery-ui/jquery.ui.resizable.min.js"></script>
+    <script src="~/Content/Script/plugins/jquery-ui/jquery.ui.sortable.min.js"></script>
+    <!-- Touch enable for jquery UI -->
+    <script src="~/Content/Script/plugins/touch-punch/jquery.touch-punch.min.js"></script>
+    <!-- slimScroll -->
+    <script src="~/Content/Script/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Content/Script/bootstrap.min.js"></script>
+    <script src="~/Content/Script/plugins/datatable/jquery.dataTables.min.js"></script>
+    <!-- vmap -->
+    <script src="~/Content/Script/plugins/vmap/jquery.vmap.min.js"></script>
+    <script src="~/Content/Script/plugins/vmap/jquery.vmap.world.js"></script>
+    <script src="~/Content/Script/plugins/vmap/jquery.vmap.sampledata.js"></script>
+    <!-- Bootbox -->
+    <script src="~/Content/Script/plugins/bootbox/jquery.bootbox.js"></script>
+    <!-- Flot -->
+    <script src="~/Content/Script/plugins/flot/jquery.flot.min.js"></script>
+    <script src="~/Content/Script/plugins/flot/jquery.flot.bar.order.min.js"></script>
+    <script src="~/Content/Script/plugins/flot/jquery.flot.pie.min.js"></script>
+    <script src="~/Content/Script/plugins/flot/jquery.flot.resize.min.js"></script>
+    <!-- imagesLoaded -->
+    <script src="~/Content/Script/plugins/imagesLoaded/jquery.imagesloaded.min.js"></script>
+    <!-- PageGuide -->
+    <script src="~/Content/Script/plugins/pageguide/jquery.pageguide.js"></script>
+    <!-- FullCalendar -->
+    <script src="~/Content/Script/plugins/fullcalendar/fullcalendar.min.js"></script>
+
+    <!-- icheck -->
+    <script src="~/Content/Script/plugins/icheck/jquery.icheck.min.js"></script>
+    <!-- SweetAlert js -->
+    <script src="~/Content/Script/SweetAlert/sweetalert.min.js"></script>
+    <!-- toaster -->
+    <script src="~/Content/Script/plugins/toaster/toaster.js"></script>
+
+    <!-- Theme framework -->
+    <script src="~/Content/Script/eakroko.js"></script>
+    <!-- Theme scripts -->
+    <script src="~/Content/Script/application.min.js"></script>
+    <!-- Just for demonstration -->
+    <script src="~/Content/Script/demonstration.min.js"></script>
+
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $(".dropdown-toggle").dropdown();
+            });
+
+    </script>
+
+    <!--[if lte IE 9]>
+        <script src="~/Script/plugins/placeholder/jquery.placeholder.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('input, textarea').placeholder();
+            });
+        </script>
+    <![endif]-->
+    <!--End -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <style>
+        #loading {
+            background-color: #F5F8FA;
+            border: 1px solid #5A768E;
+            color: #333333;
+            font-size: 93%;
+            margin-bottom: 1em;
+            margin-top: 0.2em;
+            padding: 8px 12px;
+            width: 8.4em;
+            display: none;
+            position: fixed;
+            z-index: 100000;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(80,80,80,.1) url('../Content/Images/default.gif') 50% 50% no-repeat;
+        }
+
+        a:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body style="background-color: #f2f5ff; height: inherit;">
+
+    @Html.Partial("~/Views/Header.cshtml")
+
+    <div class="col-sm-12 mainContentArea" id="content-area">
+        <div id="main1">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+                <div id="loading" class="modal-backdrop fade in">
+                </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="text-center">
+        @Html.Partial("~/Views/Footer.cshtml")
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+
+    <script src="~/Content/Script/jquery.min.js"></script>
+    <!-- select2 -->
+
+    <script src="~/Content/Script/plugins/select2/select2.js"></script>
+    <!-- Nice Scroll -->
+    <script src="~/Content/Script/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="~/Content/Script/plugins/jquery-ui/jquery.ui.core.min.js"></script>
+    <script src="~/Content/Script/plugins/jquery-ui/jquery.ui.widget.min.js"></script>
+    <script src="~/Content/Script/plugins/jquery-ui/jquery.ui.mouse.min.js"></script>
+    <script src="~/Content/Script/plugins/jquery-ui/jquery.ui.draggable.min.js"></script>
+    <script src="~/Content/Script/plugins/jquery-ui/jquery.ui.resizable.min.js"></script>
+    <script src="~/Content/Script/plugins/jquery-ui/jquery.ui.sortable.min.js"></script>
+    <!-- Touch enable for jquery UI -->
+    <script src="~/Content/Script/plugins/touch-punch/jquery.touch-punch.min.js"></script>
+    <!-- slimScroll -->
+    <script src="~/Content/Script/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Content/Script/bootstrap.min.js"></script>
+    <script src="~/Content/Script/plugins/datatable/jquery.dataTables.min.js"></script>
+    <!-- vmap -->
+    <script src="~/Content/Script/plugins/vmap/jquery.vmap.min.js"></script>
+    <script src="~/Content/Script/plugins/vmap/jquery.vmap.world.js"></script>
+    <script src="~/Content/Script/plugins/vmap/jquery.vmap.sampledata.js"></script>
+    <!-- Bootbox -->
+    <script src="~/Content/Script/plugins/bootbox/jquery.bootbox.js"></script>
+    <!-- Flot -->
+    <script src="~/Content/Script/plugins/flot/jquery.flot.min.js"></script>
+    <script src="~/Content/Script/plugins/flot/jquery.flot.bar.order.min.js"></script>
+    <script src="~/Content/Script/plugins/flot/jquery.flot.pie.min.js"></script>
+    <script src="~/Content/Script/plugins/flot/jquery.flot.resize.min.js"></script>
+    <!-- imagesLoaded -->
+    <script src="~/Content/Script/plugins/imagesLoaded/jquery.imagesloaded.min.js"></script>
+    <!-- PageGuide -->
+    <script src="~/Content/Script/plugins/pageguide/jquery.pageguide.js"></script>
+    <!-- FullCalendar -->
+    <script src="~/Content/Script/plugins/fullcalendar/fullcalendar.min.js"></script>
+    <!-- Chosen -->
+    <script src="~/Content/Script/plugins/chosen/chosen.jquery.min.js"></script>
+   
+    <!-- icheck -->
+    <script src="~/Content/Script/plugins/icheck/jquery.icheck.min.js"></script>
+    <!-- SweetAlert js -->
+    <script src="~/Content/Script/SweetAlert/sweetalert.min.js"></script>
+
+    <!-- Theme framework -->
+    <script src="~/Content/Script/eakroko.js"></script>
+    <!-- Theme scripts -->
+    <script src="~/Content/Script/application.min.js"></script>
+    <!-- Just for demonstration -->
+    <script src="~/Content/Script/demonstration.min.js"></script>
+
+    <script src="~/Content/Script/plugins/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Content/Script/plugins/pulsate/jquery.pulsate.min.js"></script>
+
+    <!-- Custom Js   -->
+    @{  var date = DateTime.Now; }
+
+
+    <script src="~/Content/Script/Custom/Extention.js?a=@( date )"></script>
+    <script src="~/Content/Script/Custom/Claim.js?a=@( date )"></script>
+    <script src="~/Content/Script/jquery.validate.min.js"></script>
+
+    <!--Call Module Specific script here-->
+    <!---->
+    <script>
+        $(".alert-field").pulsate({
+            color: "#f00", // set the color of the pulse
+            reach: 20,                              // how far the pulse goes in px
+            speed: 1000,                            // how long one pulse takes in ms
+            pause: 0,                               // how long the pause between pulses is in ms
+            glow: true,                             // if the glow should be shown too
+            repeat: true,                           // will repeat forever if true, if given a number will repeat for that many times
+            onHover: false                          // if true only pulsate if user hovers over the element
+        });
+
+        $(function () {
+
+            var _jwt = @(new HtmlString(Json.Encode(Session["JwtAccessToken"])));
+            if(_jwt){
+                localStorage.setItem("_jwt", _jwt);
+            }
+
+           /* setInterval(function () { _$.checkSessionTimeout(); }, 3000); */
+
+            $("#anchorSignOut").on('click', function() {
+                localStorage.removeItem("_jwt");
+            });
+        });
+    </script>
+    <!-- End -->
+</body>
+</html>
